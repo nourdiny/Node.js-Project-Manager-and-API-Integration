@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Insert Project Data</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container" onclick="onclick">
+      <div class="top"></div>
+      <div class="bottom"></div>
+      <div class="center">
+        <h2>Please Sign In</h2>
+        <p id="message-container" style="font-size: 15px;color: red;"></p>
+        <form action="/send" method="post">
+          <input type="email" placeholder="email" name="email" />
+          <input type="password" placeholder="password" name="password" />
+          <button type="submit" className="block site-btn bg-[#ca1515] w-[50%]">
+            Sign Up
+          </button>
+        </form>
+        <h2>&nbsp;</h2>
+      </div>
+    </div>
+    <script >
+      document.addEventListener("DOMContentLoaded", function () {
+        const messageContainer = document.getElementById("message-container");
+
+        // Extract the message from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get("message");
+        console.log(message);
+        // Display the message in the container
+        if (message) {
+          messageContainer.textContent = decodeURIComponent(message);
+        }
+      });
+    </script>
+  </body>
+</html>
